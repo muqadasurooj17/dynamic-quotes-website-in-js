@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Dcocument</title>
+        <style>
+            @charset "UTF-8";
+:root{
+    --main-color:#54a0ff;
+    --secondary-color:#b0c8e0;
+    --sans:"josefin sans",sans serif;
+}
+body{
+    background-color: blue;
+}
+.container{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width: 50vw;
+    height: 70vh;
+    background:var(--main-color);
+    font-family: "dancing script",cursive;
+    overflow: hidden;
+    color:#797d7f;
+    letter-spacing: 0.5px;
+    display: grid;
+    place-items:center;}
+.inner{
+    position: absolute;
+    height: 100%;
+    width:80%;
+    opacity: 1;
+    -webkit-transition :1s;
+    transition: 1s;
+}
+.box {
+position: absolute;
+top:50%;
+
+width:80%;
+height: 70%;
+--webkit-transform:translate(-50%,-50%);
+background: #fff;
+border-radius: 5px;
+overflow: hidden;
+box-shadow: 0 0 1.5rem rgba(0,0,0,0.5);
+font-size: 1.3rem;}
+.number::before{
+    content: "";
+    position: absolute;
+    top:-130;
+    width: 90px;
+    right: -30px;
+    height: 200px;
+    background: var(--secondary-color);
+    -webkit-transform:rotate(-45deg);
+    transform: rotate(-45deg);
+    z-index: -1;
+    box-shadow: 0 0 0.7rem rgba(0,0,0,0.5);}
+        </style>
+        </head>
+        
+<body>
+    <div id="quotes"></div>
+    <div id="author"></div>
+    <button id="newQ">new Quotes</button>
+    <div class="container" id="container">
+        <div class="inner" id="inner">  
+        <div class="box" id="box">
+            <p class="number">
+
+            </p>
+   <div class="text">
+       <i class="start-quote fas fa-quote-left"></i>
+    <p id="quotes"class="quotes">    </p>
+    <p id="author" class="author"></p>
+</div>
+<label class="buton">
+    <p id="newQ">new Quotes</p></label>
+            </div>
+            </div>
+            </div>  
+        <script>
+
+            const quotes=document.getElementById("quotes");
+            const author=document.getElementById("author");
+            const newQ=document.getElementById("newQ");
+            let realData="";
+            const getNewQuotes=()=>{
+         let rnum=Math.floor(Math.random()*10);
+       quotes.innerText=`${realData[rnum].text}`;      
+        author.innerText=`${realData[rnum].author}`;
+               
+            };
+    const getQuotes=async()=>{
+  const api="https://type.fit/api/quotes";
+                try{
+         let data=await fetch(api);
+         realData=await data.json();
+          getNewQuotes();
+        //console.log(realData[0]);
+           //  console.log(realData[10].author);
+                }catch(error){}
+            };
+    newQ.addEventListener("click",getNewQuotes);
+            getQuotes();
+        </script>
+        </body>
