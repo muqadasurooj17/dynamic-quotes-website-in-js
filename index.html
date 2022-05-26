@@ -38,10 +38,9 @@ body{
 }
 .box {
 position: absolute;
-top:50%;
-
-width:80%;
-height: 70%;
+top:20%;
+width:90%;
+height:70%;
 --webkit-transform:translate(-50%,-50%);
 background: #fff;
 border-radius: 5px;
@@ -64,27 +63,23 @@ font-size: 1.3rem;}
         </head>
         
 <body>
-    <div id="quotes"></div>
-    <div id="author"></div>
-    <button id="newQ">new Quotes</button>
     <div class="container" id="container">
         <div class="inner" id="inner">  
         <div class="box" id="box">
-            <p class="number">
-
-            </p>
-   <div class="text">
-       <i class="start-quote fas fa-quote-left"></i>
-    <p id="quotes"class="quotes">    </p>
-    <p id="author" class="author"></p>
-</div>
+            <p class="number"></p>
+   
 <label class="buton">
-    <p id="newQ">new Quotes</p></label>
-            </div>
-            </div>
-            </div>  
-        <script>
+    <p id="newQ">new Quotes</p>
+    <div id="quotes"></div>
+    <div id="author"></div>
+    <div class="text">
+        <p id="quotes"class="quotes">  </p>
+        <p id="author" class="author"></p>
+</label>
 
+<button id="newQ">new Quotes</button>
+ </div> </div></div> </div>  
+        <script>
             const quotes=document.getElementById("quotes");
             const author=document.getElementById("author");
             const newQ=document.getElementById("newQ");
